@@ -1,0 +1,23 @@
+#Create a database PostgreeSQL login
+services:
+  - type: postgresql
+    version: 9.6
+    name: postgresql
+    databases:
+      - name: postgresql
+        owner: postgresql
+    users:
+      - name: postgresql
+        password: postgresql
+        databases:
+          - postgresql
+    volumes:
+      - type: persistentVolume
+        size: 1Gi
+        path: /var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgresql
+      POSTGRES_USER: postgresql
+      POSTGRES_DB: postgresql
+    exposedPorts:
+      - 5432
