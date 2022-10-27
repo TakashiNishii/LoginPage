@@ -1,4 +1,19 @@
+
 export default function LoginPage() {
+  function handleLogin() {
+    //prevent default form submit
+    const form = document.getElementById("loginForm") as HTMLFormElement;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+    const email = document.getElementById('email') as HTMLInputElement;
+    const password = document.getElementById('password') as HTMLInputElement;
+    if (email.value === 'admin@admin.com' && password.value === 'admin') {
+      alert('Login success');
+    } else {
+      alert('Login error');
+    }
+  }
     return (
       <>
         <div className="min-h-full flex ">
@@ -82,7 +97,7 @@ export default function LoginPage() {
                 </div>
   
                 <div className="mt-6">
-                  <form action="#" method="POST" className="space-y-6">
+                  <form id="loginForm" method="POST" className="space-y-6">
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                         Email
@@ -138,6 +153,7 @@ export default function LoginPage() {
                     <div>
                       <button
                         type="submit"
+                        onClick={handleLogin}
                         className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                       >
                         Entrar
